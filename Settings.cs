@@ -12,7 +12,8 @@ namespace Daybot
     public string TwitchToken { get; set; } = "";
     public string ChannelName { get; set; } = "";
     public bool EnablePosting { get; set; } = true;
-    public int CooldownSeconds { get; set; } = 5;
+    public int GeneralPostingCooldown { get; set; } = 5;
+    public int NumberPostingCooldown { get; set; } = 15;
   }
 
   class SettingsLoader

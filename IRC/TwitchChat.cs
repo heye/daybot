@@ -37,8 +37,6 @@ namespace Daybot.IRC
     public static void CheckState()
     {
       if (!IsSetup) {
-        Console.WriteLine("TWITCH CLIENT - SETUP");
-
         //remove handlers because somehow onchannelmessage was sometimes triggered twice???
         client.OnConnect -= OnConnectHandler;
         client.OnConnect += OnConnectHandler;
@@ -55,7 +53,7 @@ namespace Daybot.IRC
       }
 
       if (!IsConnected() && LastConnect + ConnectRetryTime < Now()) {
-        Console.WriteLine("TWITCH CLIENT - CONNECT");
+        Console.WriteLine("TWITCH CLIENT - CONNECTING...");
         LastConnect = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
 
@@ -86,7 +84,7 @@ namespace Daybot.IRC
 
     public static void OnConnectHandler(object sender, EventArgs e)
     {
-      Console.WriteLine("ON CONNECT");
+      Console.WriteLine("CONNECTED, JOINING CHANNEL " + SettingsLoader.Settings.ChannelName);
       string channel = Daybot.SettingsLoader.Settings.ChannelName;
       client.JoinChannel("#" + channel);
     }
@@ -116,11 +114,17 @@ namespace Daybot.IRC
 
     public static void SendMessage(string message)
     {
-      if(LastSend + 5 > Utils.Now()) {
-        Console.WriteLine("BLOCKED SEND: " + message + " " + LastSend.ToString() + " > " + Utils.Now().ToString());
+      if(LastSend + SettingsLoader.Settings.GeneralPostingCooldown > Utils.Now()) {
+        Console.WriteLine("BLOCKED SEND (cooldown): " + message + " " + LastSend.ToString() + " > " + Utils.Now().ToString());
         return;
       }
       LastSend = Utils.Now();
+
+
+      if (!SettingsLoader.Settings.EnablePosting) {
+        Console.WriteLine("BLOCKED SEND (not allowed): " + message + " " + LastSend.ToString() + " > " + Utils.Now().ToString());
+        return;
+      }
 
       Console.WriteLine("SEND: " + message);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Daybot
 {
@@ -19,11 +20,9 @@ namespace Daybot
 
       Daybot.IRC.TwitchClient.Reconnect();
 
-      Console.WriteLine("RUNNING THE BOT...");
       try {
         while (true) {
-          Console.Read();
-          Daybot.IRC.TwitchClient.SendMessage("LUL");
+          Thread.Sleep(100);
         }
       }
       catch(Exception e) {

@@ -155,7 +155,7 @@ namespace Daybot
       for (int i = 0; i<RecentMessages.Count; i++) {
         if(RecentMessages[i].Sender == sender) {
           //disable for testing to allow multiple entries per chatter
-          RecentMessages.Remove(RecentMessages[i]);
+          //RecentMessages.Remove(RecentMessages[i]);
           break;
         }
       }
@@ -175,7 +175,7 @@ namespace Daybot
     public void Evaluate()
     {
       //EvaluationCooldown seconds cooldown
-      if (LastEval + EvaluationCooldown > Utils.Now()) {
+      if (LastEval + SettingsLoader.Settings.NumberPostingCooldown > Utils.Now()) {
         return;
       }
       LastEval = Utils.Now();

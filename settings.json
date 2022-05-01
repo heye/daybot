@@ -1,6 +1,8 @@
 ﻿{
-  "TwitchUser": "the_heye",
-  "TwitchToken": "8a9p6kkiy2ypsrgoeo9vn6e0ww6fpx",
-  "ChannelName": "chimpnsalmon",
-  "EnablePosting":  true
+  "TwitchUser": "BOT_USERNAME",
+  "TwitchToken": "BOT_AUTH_TOKEN",
+  "ChannelName": "CHANNEL_NAME",
+  "EnablePosting": true,
+  "GeneralPostingCooldown": 5,
+  "NumberPostingCooldown":  15
 }
