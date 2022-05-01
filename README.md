@@ -12,3 +12,10 @@ How To Run:
 
 If the bot connects successfully to twitch chat you should see output similar to this:
 ![Screenshot of the running bot](https://github.com/heye/daybot/blob/master/readme_screenshot.png?raw=true)
+
+
+
+Typical Problems:
+- Bot only shows 'TWITCH CLIENT - CONNECTING...' -> Restart the application
+- Connection is succesfull but no messages are shown 
+  - Does channel name include UPPER CASE characters? Try with only lower case. E.g. 'the_HEYE -> 'the_heye'
