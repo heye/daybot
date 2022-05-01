@@ -140,12 +140,12 @@ namespace Daybot
 
       int num = GetNumber(message);
       if (num < 0) {
-        Console.WriteLine("MESSAGE IS NO NUMBER: " + num.ToString());
+        //Console.WriteLine("MESSAGE IS NO NUMBER: " + num.ToString());
         //don't return anything on number ever (this is not a !xyz command)
         return "";
       }
 
-      Console.WriteLine("MESSAGE IS NUMBER: " + num.ToString());
+      //Console.WriteLine("MESSAGE IS NUMBER: " + num.ToString());
 
       NumberMessage numberMessage = new NumberMessage();
       numberMessage.Number = num;
