@@ -19,3 +19,6 @@ Typical Problems:
 - Bot only shows 'TWITCH CLIENT - CONNECTING...' -> Restart the application
 - Connection is succesfull but no messages are shown 
   - Does channel name include UPPER CASE characters? Try with only lower case. E.g. 'the_HEYE -> 'the_heye'
+- You may need to install the required framework. Follow the link in the error message or try this one:
+  - https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=3.1.0&arch=x64&rid=win-x64&os=win10
+- To get error messages you can start a terminal in the downloaded directory and run 'daybot.exe'
